@@ -1,0 +1,76 @@
+Tabel:
+create table tugas_populasi(
+    -> kota varchar(50),
+    -> kec tinyint(3) unsigned,
+    -> kel smallint(5) unsigned,
+    -> luas decimal(6,2),
+    -> penduduk int(10) unsigned
+    -> ;
+
+insert tugas_populasi values ('jakarta', 44, 267, '664.01',9988495);
+insert tugas_populasi values ('Surabaya', 31, 154, '350,54', 2805906);
+insert tugas_populasi values ('Medan', 21, 151, '265,00', 2465469);
+insert tugas_populasi values ('Bekasi', 12, 56, '206,61', 2381053);
+insert tugas_populasi values ('Bandung', 30, 151, '167.67', 2339463);
+insert tugas_populasi values ('Makassar', 14, 143, '199.26', 1651146);
+insert tugas_populasi values ('Depok', 11, 63, '200.29', 1631951);
+insert tugas_populasi values ('Depok', 11, 63, '200.29', 1631951);
+insert tugas_populasi values ('Semarang', 16, 177, '373.78', 1621384);
+insert tugas_populasi values ('Tangerang', 13, 104, '153.93', 1566190);
+insert tugas_populasi values ('Palembang', 14, 107, '369.22', 1548064);
+
+
+
+1. Tampilkan kolom kota, kec, luas dan penduduk!
+jawab: select kota, kec, luas, penduduk from tugas_populasi;
+
+2. Tampilkan kolom kota kemudian ubah namanya menjadi Nama Kota, kolom kec menjadi Jumlah Kecamatan dan kolom kel menjadi Jumlah Kelurahan!
+jawab: 
+ select
+    -> kota as 'Nama Kota',
+    -> kec as 'Jumlah Kecamatan',
+    -> kel as 'Jumlah Kelurahan'
+    -> from tugas_populasi
+    -> ;
+
+3. Tampilkan data dari table tugas_populasi berdasarkan Kecamatan dari jumlah terbesar!
+select * from tugas_populasi order by kec desc;
+
+4. Urutkan berdasarkan kolom kel lalu diambil 5 data setelah baris ke-2!
+select * from tugas_populasi order by kel asc limit 2,5;
+
+5. Tampilkan data dimana kolom kota berisi string Depok!
+select * from tugas_populasi where kota = 'Depok';
+
+
+
+Tabel:
+create table tugas_daftar_provinsi(
+    -> prov varchar(50),
+    -> ibukota varchar(50),
+    -> luas int(11),
+    -> tanggal_diresmikan date
+    -> );
+
+insert tugas_daftar_provinsi values ("Sumatera Utara", 'Medan', 72981, '1956-11-29');
+insert tugas_daftar_provinsi values ("Sumatera Barat", 'Padang', 42297, '1957-08-09');
+insert tugas_daftar_provinsi values ('Jawa Barat', 'Bandung', 35245, '1950-07-04');
+insert tugas_daftar_provinsi values ("Jawa Tengah", 'Semarang', 33987, '1950-07-04');
+insert tugas_daftar_provinsi values ("Sulawesi Selatan", 'Makassar', 46116, '1960-12-13');
+insert tugas_daftar_provinsi values ("Bali", 'Denpasar', 5561, '1958-08-14');
+insert tugas_daftar_provinsi values ("Sumatera Selatan", 'Palembang', 85679, '1950-08-14');
+insert tugas_daftar_provinsi values ("Papua Barat", 'Manokwari', 114566, '1999-10-04');
+
+6. Tuliskan query untuk menampilkan hasil berikut
+Jawab:
+select
+    -> tugas_daftar_provinsi.prov,
+    -> tugas_populasi.kota,
+    -> tugas_populasi.penduduk
+    -> from
+    -> tugas_populasi, tugas_daftar_provinsi
+    -> where
+    -> tugas_populasi.kota = tugas_daftar_provinsi.ibukota;
+
+7. Tampilkan isi tabel populasi dimana nilai kolom kecamatan antara 20 dan 30!
+select * from tugas_populasi where kec between 20 and 30;
